@@ -1,0 +1,111 @@
+{% stylesheet %}
+  .sticky-header {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    background: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    z-index: 100;
+    padding: 1rem 0;
+  }
+
+  .nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #00d4ff;
+    text-decoration: none;
+  }
+
+  .nav-menu {
+    display: flex;
+    gap: 2rem;
+  }
+
+  .nav-link {
+    color: #e0e0e0;
+    text-decoration: none;
+    position: relative;
+    font-weight: 500;
+  }
+
+  .nav-link:hover {
+    color: #00d4ff;
+  }
+
+  .nav-actions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  @media (max-width: 768px) {
+    .nav-menu {
+      display: none;
+    }
+    .nav-menu.active {
+      display: flex;
+    }
+    .mobile-menu-btn {
+      display: flex;
+    }
+  }
+{% endstylesheet %}
+
+<nav class="sticky-header">
+  <div class="nav-container">
+    <a href="{{ shop.url }}" class="nav-logo">
+      <span>✨</span>
+      <span>{{ shop.name }}</span>
+    </a>
+    
+    <div class="nav-menu" id="navMenu">
+      <a href="/collections" class="nav-link">Products</a>
+      <a href="#pricing" class="nav-link">Pricing</a>
+      <a href="#reviews" class="nav-link">Reviews</a>
+      <a href="/pages/contact" class="nav-link">Contact</a>
+    </div>
+
+    <div class="nav-actions">
+      {% if shop.customer_accounts_enabled %}
+        {% if customer %}
+          <a href="/account" class="nav-link">{{ customer.first_name }}</a>
+          {{ 'Log out' | customer_logout_link | link_to_tag: 'class', 'nav-link' }}
+        {% else %}
+          {{ 'Log in' | customer_login_link | link_to_tag: 'class', 'nav-link' }}
+          {{ 'Register' | customer_register_link | link_to_tag: 'class', 'nav-link' }}
+        {% endif %}
+      {% endif %}
+      
+      <a href="/cart" class="nav-link">
+        Cart ({{ cart.item_count }})
+      </a>
+    </div>
+  </div>
+</nav>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+      "type": "text",
+      "id": "logo_text",
+      "label": "Logo Text",
+      "default": "PremiumHub"
+    }
+  ]
+}
+{% endschema %}

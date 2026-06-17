@@ -1,0 +1,29 @@
+{% stylesheet %}
+  .scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #00d4ff, #0099ff, #ff006e);
+    z-index: 9998;
+  }
+{% endstylesheet %}
+
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<script>
+  function updateScrollProgress() {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollPercent = (scrollTop / docHeight) * 100;
+    document.getElementById('scrollProgress').style.width = scrollPercent + '%';
+  }
+  
+  window.addEventListener('scroll', updateScrollProgress);
+</script>
+
+{% schema %}
+{
+  "name": "Scroll Progress"
+}
+{% endschema %}

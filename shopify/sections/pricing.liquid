@@ -1,0 +1,130 @@
+{% stylesheet %}
+  .pricing-section {
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+
+  .pricing-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 2rem;
+    text-align: center;
+    position: relative;
+    transition: all 0.3s ease;
+  }
+
+  .pricing-card:hover {
+    transform: translateY(-20px);
+    border-color: #00d4ff;
+    background: rgba(0, 212, 255, 0.05);
+    box-shadow: 0 20px 50px rgba(0, 212, 255, 0.2);
+  }
+
+  .premium-card {
+    border-color: #ff006e;
+    background: rgba(255, 0, 110, 0.05);
+    transform: scale(1.05);
+  }
+
+  .premium-badge {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, #ff006e, #00d4ff);
+    color: white;
+    padding: 0.5rem 1.5rem;
+    border-radius: 50px;
+    font-size: 0.875rem;
+    font-weight: bold;
+  }
+
+  .pricing-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    margin-top: 0.5rem;
+  }
+
+  .price {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #00d4ff;
+    margin: 1rem 0;
+  }
+
+  .features {
+    list-style: none;
+    text-align: left;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .features li {
+    padding: 0.5rem 0;
+  }
+{% endstylesheet %}
+
+<section class="pricing-section" id="pricing">
+  <div class="section-header">
+    <h2>{{ section.settings.title }}</h2>
+    <p>{{ section.settings.subtitle }}</p>
+  </div>
+
+  <div class="pricing-grid">
+    {% for plan in section.settings.plans %}
+      <div class="pricing-card {% if forloop.index == 3 %}premium-card{% endif %}">
+        {% if forloop.index == 3 %}
+          <div class="premium-badge">Most Popular</div>
+        {% endif %}
+        
+        <h3>{{ plan.name }}</h3>
+        <div class="price">{{ plan.price }}</div>
+        <p>{{ plan.description }}</p>
+        
+        <button class="product-btn" onclick="addToCart()">Get Started</button>
+        
+        {% if plan.features %}
+          <ul class="features">
+            {% for feature in plan.features %}
+              <li>✓ {{ feature }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Pricing Section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Pricing Plans"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Choose the perfect plan for you"
+    }
+  ]
+}
+{% endschema %}

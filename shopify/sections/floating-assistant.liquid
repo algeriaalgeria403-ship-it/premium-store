@@ -1,0 +1,83 @@
+{% stylesheet %}
+  .floating-assistant {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 999;
+  }
+
+  .assistant-toggle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ff006e, #00d4ff);
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 30px rgba(0, 212, 255, 0.3);
+  }
+
+  .assistant-toggle:hover {
+    transform: scale(1.1);
+  }
+
+  .assistant-menu {
+    position: absolute;
+    bottom: 80px;
+    right: 0;
+    background: rgba(15, 23, 42, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    overflow: hidden;
+    max-width: 0;
+    max-height: 0;
+    transition: all 0.3s ease;
+  }
+
+  .assistant-menu.active {
+    max-width: 300px;
+    max-height: 400px;
+  }
+
+  .assistant-option {
+    width: 100%;
+    padding: 1rem;
+    background: none;
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    color: #e0e0e0;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.3s ease;
+  }
+
+  .assistant-option:hover {
+    background: rgba(0, 212, 255, 0.1);
+    color: #00d4ff;
+  }
+{% endstylesheet %}
+
+<div class="floating-assistant" id="floatingAssistant">
+  <button class="assistant-toggle" id="assistantToggle">💬</button>
+  <div class="assistant-menu" id="assistantMenu">
+    <button class="assistant-option" onclick="alert('Pricing information')">💰 Pricing</button>
+    <button class="assistant-option" onclick="alert('Payment methods')">💳 Payment Methods</button>
+    <button class="assistant-option" onclick="alert('Product information')">ℹ️ Product Info</button>
+    <button class="assistant-option" onclick="window.location.href='{{ shop.url }}/pages/contact'">🎧 Contact Support</button>
+  </div>
+</div>
+
+<script>
+  document.getElementById('assistantToggle').addEventListener('click', function() {
+    document.getElementById('assistantMenu').classList.toggle('active');
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Floating Assistant",
+  "settings": []
+}
+{% endschema %}

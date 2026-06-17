@@ -1,0 +1,129 @@
+{% stylesheet %}
+  .footer {
+    background: #0a0f1a;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 3rem 2rem 1rem;
+    margin-top: 0;
+  }
+
+  .footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .footer-column h4 {
+    margin-bottom: 1rem;
+    color: #00d4ff;
+  }
+
+  .footer-column p {
+    color: #e0e0e0;
+    opacity: 0.8;
+    margin-bottom: 0.5rem;
+  }
+
+  .footer-column ul {
+    list-style: none;
+  }
+
+  .footer-column a {
+    color: #e0e0e0;
+    text-decoration: none;
+    opacity: 0.8;
+    transition: all 0.3s ease;
+  }
+
+  .footer-column a:hover {
+    color: #00d4ff;
+    opacity: 1;
+  }
+
+  .footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 2rem;
+    text-align: center;
+    color: #e0e0e0;
+    opacity: 0.6;
+  }
+{% endstylesheet %}
+
+<footer class="footer">
+  <div class="footer-content">
+    <div class="footer-column">
+      <h4>About {{ shop.name }}</h4>
+      <p>Premium digital products store with instant delivery and 24/7 support.</p>
+    </div>
+    
+    <div class="footer-column">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="/collections">Products</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="/pages/about">About Us</a></li>
+      </ul>
+    </div>
+    
+    <div class="footer-column">
+      <h4>Contact</h4>
+      <p>WhatsApp: <a href="https://wa.me/{{ section.settings.whatsapp }}">{{ section.settings.whatsapp }}</a></p>
+      <p>Email: <a href="mailto:{{ section.settings.email }}">{{ section.settings.email }}</a></p>
+    </div>
+    
+    <div class="footer-column">
+      <h4>Follow Us</h4>
+      <ul>
+        {% if section.settings.facebook_url %}
+          <li><a href="{{ section.settings.facebook_url }}" target="_blank">Facebook</a></li>
+        {% endif %}
+        {% if section.settings.instagram_url %}
+          <li><a href="{{ section.settings.instagram_url }}" target="_blank">Instagram</a></li>
+        {% endif %}
+        {% if section.settings.twitter_url %}
+          <li><a href="{{ section.settings.twitter_url }}" target="_blank">Twitter</a></li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+  
+  <div class="footer-bottom">
+    <p>&copy; {{ "now" | date: "%Y" }} {{ shop.name }}. All rights reserved.</p>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    {
+      "type": "text",
+      "id": "whatsapp",
+      "label": "WhatsApp Number",
+      "placeholder": "+213123456789"
+    },
+    {
+      "type": "email",
+      "id": "email",
+      "label": "Email Address"
+    },
+    {
+      "type": "url",
+      "id": "facebook_url",
+      "label": "Facebook URL"
+    },
+    {
+      "type": "url",
+      "id": "instagram_url",
+      "label": "Instagram URL"
+    },
+    {
+      "type": "url",
+      "id": "twitter_url",
+      "label": "Twitter URL"
+    }
+  ]
+}
+{% endschema %}

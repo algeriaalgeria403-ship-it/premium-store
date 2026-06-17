@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="{{ shop.locale }}">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{{ page_description | escape }}">
+    <meta name="theme-color" content="#0f172a">
+    
+    {% if canonical_url %}
+      <link rel="canonical" href="{{ canonical_url }}">
+    {% endif %}
+
+    <title>{{ page_title }}{% if page_title != shop.name %} | {{ shop.name }}{% endif %}</title>
+
+    {% include 'head-seo' %}
+    {% include 'head-css' %}
+    
+    {{ content_for_header }}
+  </head>
+
+  <body class="{% if customer %}customer-logged-in{% endif %}">
+    {% section 'header' %}
+    {% section 'scroll-progress' %}
+    
+    <div class="page-container">
+      <main role="main">
+        {{ content_for_layout }}
+      </main>
+    </div>
+
+    {% section 'footer' %}
+    {% section 'floating-assistant' %}
+    {% section 'back-to-top' %}
+    
+    {{ 'theme.js' | asset_url | script_tag }}
+  </body>
+</html>
