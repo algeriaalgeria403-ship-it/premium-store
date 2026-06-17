@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Premium Digital Products Store - High-quality accounts and services delivered instantly">
+    <meta name="keywords" content="digital products, premium accounts, Netflix, ChatGPT, CapCut, streaming services">
+    <meta name="theme-color" content="#0f172a">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Premium Digital Products Store">
+    <meta property="og:description" content="Get premium accounts instantly with secure delivery and 24/7 support">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://premium-store.example.com/og-image.jpg">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Premium Digital Products Store",
+        "url": "https://premium-store.example.com",
+        "description": "Premium digital products and accounts delivery service"
+    }
+    </script>
+    
+    <title>Premium Digital Products Store | Instant Delivery</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Premium Loading Screen -->
+    <div id="loadingScreen" class="loading-screen">
+        <div class="loading-container">
+            <div class="animated-logo">
+                <svg viewBox="0 0 100 100" class="logo-svg">
+                    <circle cx="50" cy="50" r="45" fill="none" stroke="url(#logoGradient)" stroke-width="3"/>
+                    <path d="M 30 50 Q 50 30 70 50 Q 50 70 30 50" fill="none" stroke="url(#logoGradient)" stroke-width="2"/>
+                    <defs>
+                        <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#00d4ff;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#0099ff;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+            </div>
+            <div class="loading-bar">
+                <div class="loading-progress"></div>
+            </div>
+            <p class="loading-text">Loading Premium Experience...</p>
+        </div>
+    </div>
+
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-progress"></div>
+
+    <!-- Navigation -->
+    <nav class="sticky-header">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-icon">✨</span>
+                <span class="logo-text">PremiumHub</span>
+            </div>
+            
+            <div class="nav-menu" id="navMenu">
+                <a href="#products" class="nav-link">Products</a>
+                <a href="#pricing" class="nav-link">Pricing</a>
+                <a href="#reviews" class="nav-link">Reviews</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle">🌙</button>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Parallax -->
+    <section class="hero" id="hero">
+        <div class="aurora-background">
+            <div class="aurora aurora-1"></div>
+            <div class="aurora aurora-2"></div>
+            <div class="aurora aurora-3"></div>
+        </div>
+        
+        <div class="floating-particles"></div>
+        <div class="glow-tracker"></div>
+
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span class="title-word">Premium</span>
+                <span class="title-word">Digital</span>
+                <span class="title-word">Products</span>
+            </h1>
+            <p class="hero-subtitle">Get instant access to premium accounts with secure delivery and 24/7 support</p>
+            
+            <div class="hero-buttons">
+                <button class="btn btn-primary btn-ripple" id="buyNowBtn">
+                    <span class="btn-text">Explore Products</span>
+                    <span class="btn-shine"></span>
+                </button>
+                <button class="btn btn-secondary btn-ripple">
+                    <span class="btn-text">View Pricing</span>
+                </button>
+            </div>
+
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-number" data-target="5000">0</span>+
+                    <p>Customers</p>
+                </div>
+                <div class="stat">
+                    <span class="stat-number" data-target="25000">0</span>+
+                    <p>Orders</p>
+                </div>
+                <div class="stat">
+                    <span class="stat-number" data-target="98">0</span>%
+                    <p>Satisfaction</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-scroll">
+            <div class="mouse"></div>
+        </div>
+    </section>
+
+    <!-- Live Notifications -->
+    <div class="notifications-container" id="notificationsContainer"></div>
+
+    <!-- Limited Time Offer Section -->
+    <section class="limited-offer">
+        <div class="offer-content">
+            <div class="flash-sale-banner">
+                <span class="flash-text">⚡ FLASH SALE</span>
+            </div>
+            <h2>Limited Time Offer</h2>
+            <p>Only <span id="stockCount">5</span> spots left today!</p>
+            
+            <div class="countdown-timer">
+                <div class="timer-box">
+                    <span class="timer-value" id="hours">00</span>
+                    <span class="timer-label">Hours</span>
+                </div>
+                <span class="timer-separator">:</span>
+                <div class="timer-box">
+                    <span class="timer-value" id="minutes">00</span>
+                    <span class="timer-label">Minutes</span>
+                </div>
+                <span class="timer-separator">:</span>
+                <div class="timer-box">
+                    <span class="timer-value" id="seconds">00</span>
+                    <span class="timer-label">Seconds</span>
+                </div>
+            </div>
+
+            <div class="offer-cards-grid">
+                <div class="offer-card animated-border">
+                    <div class="card-icon">🔥</div>
+                    <h3>Instant Access</h3>
+                    <p>Get your account within minutes</p>
+                </div>
+                <div class="offer-card animated-border">
+                    <div class="card-icon">🛡️</div>
+                    <h3>Secure Service</h3>
+                    <p>100% safe and reliable</p>
+                </div>
+                <div class="offer-card animated-border">
+                    <div class="card-icon">⭐</div>
+                    <h3>Premium Quality</h3>
+                    <p>Only verified accounts</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products" id="products">
+        <div class="section-header">
+            <h2>Featured Products</h2>
+            <p>Choose from our premium collection</p>
+        </div>
+
+        <div class="products-grid" id="productsGrid">
+            <!-- Products will be dynamically loaded -->
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+        <div class="section-header">
+            <h2>Pricing Plans</h2>
+            <p>Choose the perfect plan for you</p>
+        </div>
+
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <h3>Single Account</h3>
+                <div class="price">250 <span class="currency">DZD</span></div>
+                <p class="description">Any account of your choice</p>
+                <button class="btn btn-pricing btn-ripple" onclick="selectPlan('single')">
+                    Get Started
+                </button>
+                <ul class="features">
+                    <li>✓ Single Premium Account</li>
+                    <li>✓ Instant Delivery</li>
+                    <li>✓ 24/7 Support</li>
+                </ul>
+            </div>
+
+            <div class="pricing-card">
+                <h3>Starter Pack</h3>
+                <div class="price">450 <span class="currency">DZD</span></div>
+                <p class="description">Choose any 2 accounts</p>
+                <button class="btn btn-pricing btn-ripple" onclick="selectPlan('starter')">
+                    Get Started
+                </button>
+                <ul class="features">
+                    <li>✓ 2 Premium Accounts</li>
+                    <li>✓ Instant Delivery</li>
+                    <li>✓ 24/7 Support</li>
+                </ul>
+            </div>
+
+            <div class="pricing-card premium-card">
+                <div class="premium-badge">Most Popular</div>
+                <h3>Premium Pack</h3>
+                <div class="price">750 <span class="currency">DZD</span></div>
+                <p class="description">Choose any 4 accounts</p>
+                <button class="btn btn-premium btn-ripple" onclick="selectPlan('premium')">
+                    Get Started
+                </button>
+                <ul class="features">
+                    <li>✓ 4 Premium Accounts</li>
+                    <li>✓ Priority Delivery</li>
+                    <li>✓ VIP Support</li>
+                    <li>✓ Bonus Gift</li>
+                </ul>
+            </div>
+
+            <div class="pricing-card">
+                <h3>Ultimate Pack</h3>
+                <div class="price">999 <span class="currency">DZD</span></div>
+                <p class="description">All accounts + Bonus Gift</p>
+                <button class="btn btn-pricing btn-ripple" onclick="selectPlan('ultimate')">
+                    Get Started
+                </button>
+                <ul class="features">
+                    <li>✓ All Premium Accounts</li>
+                    <li>✓ Priority Delivery</li>
+                    <li>✓ VIP Support</li>
+                    <li>✓ Exclusive Bonus Gift</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Spin To Win Section -->
+    <section class="spin-to-win">
+        <div class="section-header">
+            <h2>Spin To Win</h2>
+            <p>Try your luck and win amazing rewards!</p>
+        </div>
+
+        <div class="spin-container">
+            <div class="wheel-wrapper">
+                <canvas id="rewardWheel" width="400" height="400"></canvas>
+                <button class="spin-button btn-ripple" id="spinBtn">SPIN NOW</button>
+            </div>
+
+            <div class="reward-info">
+                <p>Spin the wheel and win:</p>
+                <ul>
+                    <li>🎁 10% Discount</li>
+                    <li>🎁 20% Discount</li>
+                    <li>🎁 Free Beta Account</li>
+                    <li>🎁 Extra Gift</li>
+                    <li>🎁 Lucky Bonus</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="spin-result" id="spinResult"></div>
+    </section>
+
+    <!-- Statistics Dashboard -->
+    <section class="statistics">
+        <div class="section-header">
+            <h2>Our Statistics</h2>
+            <p>Trusted by thousands of happy customers</p>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon">👥</div>
+                <div class="stat-content">
+                    <div class="stat-number" data-target="15000">0</div>
+                    <p>Total Customers</p>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">📦</div>
+                <div class="stat-content">
+                    <div class="stat-number" data-target="45000">0</div>
+                    <p>Products Sold</p>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">⭐</div>
+                <div class="stat-content">
+                    <div class="stat-number" data-target="12000">0</div>
+                    <p>Positive Reviews</p>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">🚀</div>
+                <div class="stat-content">
+                    <div class="stat-number" data-target="98">0</div>
+                    <p class="stat-label">% Satisfaction</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="reviews" id="reviews">
+        <div class="section-header">
+            <h2>Customer Reviews</h2>
+            <p>What our customers say about us</p>
+        </div>
+
+        <div class="reviews-rating">
+            <div class="rating-circle">
+                <div class="rating-value">4.9</div>
+                <div class="rating-max">/5</div>
+            </div>
+            <div class="rating-stars">
+                ★★★★★
+            </div>
+            <p class="rating-text">Based on 2,500+ verified reviews</p>
+        </div>
+
+        <div class="reviews-carousel" id="reviewsCarousel">
+            <!-- Reviews will be dynamically loaded -->
+        </div>
+    </section>
+
+    <!-- Trust Building Section -->
+    <section class="trust-section">
+        <h2>Why Choose Us?</h2>
+        <div class="trust-grid">
+            <div class="trust-card">
+                <div class="trust-icon">🔒</div>
+                <h3>Secure Service</h3>
+                <p>Your data is encrypted and protected with military-grade security</p>
+            </div>
+            <div class="trust-card">
+                <div class="trust-icon">⚡</div>
+                <h3>Instant Delivery</h3>
+                <p>Receive your account within minutes, no waiting time</p>
+            </div>
+            <div class="trust-card">
+                <div class="trust-icon">👥</div>
+                <h3>Trusted by Thousands</h3>
+                <p>Join 15,000+ happy customers from around the world</p>
+            </div>
+            <div class="trust-card">
+                <div class="trust-icon">💬</div>
+                <h3>Fast Customer Support</h3>
+                <p>24/7 dedicated support team ready to help you</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Payment Methods Section -->
+    <section class="payment-methods">
+        <h2>Payment Methods</h2>
+        <div class="methods-grid">
+            <div class="method-card">
+                <div class="method-icon">💳</div>
+                <p>Credit Card</p>
+            </div>
+            <div class="method-card">
+                <div class="method-icon">📱</div>
+                <p>WhatsApp Pay</p>
+            </div>
+            <div class="method-card">
+                <div class="method-icon">💰</div>
+                <p>Bank Transfer</p>
+            </div>
+            <div class="method-card">
+                <div class="method-icon">🤖</div>
+                <p>Cryptocurrency</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-grid">
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>How quickly will I receive my account?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Most orders are delivered within 5-15 minutes. In rare cases, it might take up to 1 hour.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Is my purchase secure?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes, we use industry-standard encryption and security protocols to protect your data.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Can I get a refund?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>We offer a 48-hour money-back guarantee if you're not satisfied with your purchase.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>What if I don't receive my account?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Contact our support team immediately via WhatsApp or email, and we'll resolve it within 2 hours.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <h2>Ready to Get Started?</h2>
+        <p>Join thousands of happy customers and get instant access to premium accounts</p>
+        <button class="btn btn-primary btn-ripple btn-large" id="ctaButton">
+            <span class="btn-text">Order Now</span>
+        </button>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h4>About Us</h4>
+                <p>Premium digital products store with instant delivery and 24/7 support.</p>
+            </div>
+            <div class="footer-column">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#reviews">Reviews</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Contact</h4>
+                <p>WhatsApp: +213 123 456 789</p>
+                <p>Email: support@premiumhub.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 PremiumHub. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Quick Order Modal -->
+    <div class="modal" id="orderModal">
+        <div class="modal-content">
+            <button class="modal-close" id="closeModal">&times;</button>
+            <h2>Quick Order</h2>
+            <form id="orderForm" class="order-form">
+                <div class="form-group">
+                    <label for="customerName">Your Name</label>
+                    <input type="text" id="customerName" required placeholder="Ahmed Ali">
+                </div>
+
+                <div class="form-group">
+                    <label for="whatsappNumber">WhatsApp Number</label>
+                    <input type="tel" id="whatsappNumber" required placeholder="+213 123 456 789">
+                </div>
+
+                <div class="form-group">
+                    <label for="selectedProduct">Selected Product</label>
+                    <select id="selectedProduct" required>
+                        <option value="">Choose a product</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="notes">Notes (Optional)</label>
+                    <textarea id="notes" placeholder="Any special requests..."></textarea>
+                </div>
+
+                <div class="form-buttons">
+                    <button type="submit" class="btn btn-primary btn-ripple" onclick="submitViaWhatsApp(event)">
+                        📱 Order via WhatsApp
+                    </button>
+                    <button type="submit" class="btn btn-secondary btn-ripple" onclick="submitViaTelegram(event)">
+                        ✈️ Order via Telegram
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Confirmation Popup -->
+    <div class="confirmation-popup" id="confirmationPopup">
+        <div class="confirmation-content">
+            <div class="confirmation-icon">✓</div>
+            <h2>Order Confirmed!</h2>
+            <p id="confirmationMessage"></p>
+            <button class="btn btn-primary btn-ripple" onclick="closeConfirmation()">
+                Close
+            </button>
+        </div>
+    </div>
+
+    <!-- Floating Support Assistant -->
+    <div class="floating-assistant" id="floatingAssistant">
+        <button class="assistant-toggle" id="assistantToggle">
+            <span class="assistant-icon">💬</span>
+        </button>
+        <div class="assistant-menu" id="assistantMenu">
+            <button class="assistant-option" onclick="assistantAction('pricing')">
+                <span>💰</span> Pricing
+            </button>
+            <button class="assistant-option" onclick="assistantAction('payment')">
+                <span>💳</span> Payment Methods
+            </button>
+            <button class="assistant-option" onclick="assistantAction('info')">
+                <span>ℹ️</span> Product Info
+            </button>
+            <button class="assistant-option" onclick="assistantAction('support')">
+                <span>🎧</span> Contact Support
+            </button>
+        </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop">↑</button>
+
+    <script src="script.js"></script>
+</body>
+</html>
