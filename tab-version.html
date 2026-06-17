@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="متجر المنتجات الرقمية المميزة - تسليم فوري وآمن 24/7">
+    <meta name="keywords" content="منتجات رقمية، حسابات مميزة، نتفليكس، شات جي بي تي، كاب كات">
+    <meta name="theme-color" content="#0f172a">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="متجر المنتجات الرقمية المميزة">
+    <meta property="og:description" content="احصل على حسابات مميزة بتسليم فوري وآمن">
+    <meta property="og:type" content="website">
+    
+    <title>متجر المنتجات الرقمية - PremiumHub</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #00d4ff;
+            --secondary: #0099ff;
+            --accent: #ff006e;
+            --dark: #0f172a;
+            --darker: #0a0f1a;
+            --light: #f8f9fa;
+            --text: #e0e0e0;
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--dark) 0%, var(--darker) 100%);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Tab Container */
+        .tab-container {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Tab Navigation */
+        .tab-nav {
+            display: flex;
+            gap: 0;
+            border-bottom: 2px solid var(--border);
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 0 2rem;
+        }
+
+        .tab-button {
+            padding: 1rem 2rem;
+            background: none;
+            border: none;
+            color: var(--text);
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            position: relative;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .tab-button:hover {
+            color: var(--primary);
+        }
+
+        .tab-button.active {
+            color: var(--primary);
+        }
+
+        .tab-button.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            animation: slideIn 0.3s ease-out;
+        }
+
+        @keyframes slideIn {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        /* Tab Content */
+        .tab-content {
+            flex: 1;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .tab-pane {
+            display: none;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .tab-pane.active {
+            display: block;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.05), rgba(0, 153, 255, 0.05));
+        }
+
+        .aurora-background {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        .aurora {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.3;
+        }
+
+        .aurora-1 {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, var(--primary), transparent);
+            top: -200px;
+            right: -200px;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .aurora-2 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, var(--secondary), transparent);
+            bottom: -100px;
+            left: -100px;
+            animation: float 10s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 800px;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            font-weight: 900;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text);
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        /* Content Section */
+        .content-section {
+            padding: 3rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-align: center;
+        }
+
+        /* Products Grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .product-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.2);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(0, 153, 255, 0.1));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-name {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-price {
+            font-size: 1.5rem;
+            color: var(--primary);
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .product-btn {
+            width: 100%;
+            padding: 0.75rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--dark);
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .product-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+        }
+
+        /* Pricing Grid */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .pricing-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-20px);
+            border-color: var(--primary);
+            background: rgba(0, 212, 255, 0.05);
+            box-shadow: 0 20px 50px rgba(0, 212, 255, 0.2);
+        }
+
+        .premium-card {
+            border-color: var(--accent);
+            background: rgba(255, 0, 110, 0.05);
+            transform: scale(1.05);
+        }
+
+        .premium-badge {
+            position: absolute;
+            top: -15px;
+            right: 50%;
+            transform: translateX(50%);
+            background: linear-gradient(135deg, var(--accent), var(--primary));
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: bold;
+        }
+
+        .pricing-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .price {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin: 1rem 0;
+        }
+
+        .features {
+            list-style: none;
+            text-align: right;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .features li {
+            padding: 0.5rem 0;
+        }
+
+        /* Review Cards */
+        .review-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .review-card:hover {
+            background: rgba(0, 212, 255, 0.1);
+            border-color: var(--primary);
+        }
+
+        .review-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            flex-direction: row-reverse;
+        }
+
+        .review-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: var(--dark);
+        }
+
+        .review-stars {
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.1rem;
+        }
+
+        /* Buttons */
+        .btn {
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--dark);
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.5);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal.active {
+            display: flex;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .modal-content {
+            background: rgba(15, 23, 42, 0.95);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+            animation: slideUp 0.3s ease-out;
+            backdrop-filter: blur(10px);
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            color: var(--text);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .modal-close:hover {
+            color: var(--primary);
+            transform: rotate(90deg);
+        }
+
+        .modal-content h2 {
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 0.75rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text);
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            background: rgba(0, 212, 255, 0.1);
+            border-color: var(--primary);
+        }
+
+        .form-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .tab-nav {
+                padding: 0 1rem;
+                overflow-x: auto;
+            }
+
+            .tab-button {
+                padding: 1rem 1.5rem;
+                font-size: 0.9rem;
+            }
+
+            .form-buttons {
+                grid-template-columns: 1fr;
+            }
+
+            .products-grid,
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .premium-card {
+                transform: scale(1);
+            }
+
+            .hero {
+                min-height: 50vh;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="tab-container">
+        <!-- Tab Navigation -->
+        <div class="tab-nav">
+            <button class="tab-button active" onclick="switchTab('home')">🏠 الرئيسية</button>
+            <button class="tab-button" onclick="switchTab('products')">📦 المنتجات</button>
+            <button class="tab-button" onclick="switchTab('pricing')">💰 الأسعار</button>
+            <button class="tab-button" onclick="switchTab('reviews')">⭐ التقييمات</button>
+            <button class="tab-button" onclick="switchTab('contact')">📞 اتصل بنا</button>
+        </div>
+
+        <!-- Tab Content -->
+        <div class="tab-content">
+            <!-- Home Tab -->
+            <div id="home" class="tab-pane active">
+                <section class="hero">
+                    <div class="aurora-background">
+                        <div class="aurora aurora-1"></div>
+                        <div class="aurora aurora-2"></div>
+                    </div>
+                    <div class="hero-content">
+                        <h1 class="hero-title">متجر المنتجات الرقمية المميزة</h1>
+                        <p class="hero-subtitle">احصل على حسابات مميزة بتسليم فوري وآمن 24/7</p>
+                        <button class="btn btn-primary" onclick="switchTab('products')">تصفح المنتجات</button>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Products Tab -->
+            <div id="products" class="tab-pane">
+                <section class="content-section">
+                    <h2 class="section-title">المنتجات المتاحة</h2>
+                    <div class="products-grid" id="productsGrid">
+                        <!-- Products will be loaded here -->
+                    </div>
+                </section>
+            </div>
+
+            <!-- Pricing Tab -->
+            <div id="pricing" class="tab-pane">
+                <section class="content-section">
+                    <h2 class="section-title">خطط الأسعار</h2>
+                    <div class="pricing-grid" id="pricingGrid">
+                        <!-- Pricing will be loaded here -->
+                    </div>
+                </section>
+            </div>
+
+            <!-- Reviews Tab -->
+            <div id="reviews" class="tab-pane">
+                <section class="content-section">
+                    <h2 class="section-title">تقييمات العملاء</h2>
+                    <div class="products-grid" id="reviewsGrid">
+                        <!-- Reviews will be loaded here -->
+                    </div>
+                </section>
+            </div>
+
+            <!-- Contact Tab -->
+            <div id="contact" class="tab-pane">
+                <section class="content-section">
+                    <h2 class="section-title">اتصل بنا</h2>
+                    <div style="text-align: center; max-width: 600px; margin: 0 auto;">
+                        <p style="font-size: 1.1rem; margin-bottom: 2rem;">تواصل معنا عبر أحد القنوات التالية:</p>
+                        <div style="display: grid; gap: 1rem;">
+                            <a href="https://wa.me/213123456789" class="btn btn-primary" style="font-size: 1.1rem; padding: 1rem;">
+                                📱 WhatsApp
+                            </a>
+                            <a href="https://t.me/botusername" class="btn btn-primary" style="font-size: 1.1rem; padding: 1rem;">
+                                ✈️ Telegram
+                            </a>
+                            <a href="mailto:support@premiumhub.com" class="btn btn-primary" style="font-size: 1.1rem; padding: 1rem;">
+                                📧 البريد الإلكتروني
+                            </a>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <!-- Order Modal -->
+    <div class="modal" id="orderModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeOrderModal()">×</button>
+            <h2>طلب سريع</h2>
+            <form id="orderForm" class="order-form">
+                <div class="form-group">
+                    <label for="customerName">اسمك</label>
+                    <input type="text" id="customerName" required placeholder="أحمد علي">
+                </div>
+
+                <div class="form-group">
+                    <label for="whatsappNumber">رقم WhatsApp</label>
+                    <input type="tel" id="whatsappNumber" required placeholder="+213 123 456 789">
+                </div>
+
+                <div class="form-group">
+                    <label for="selectedProduct">المنتج المختار</label>
+                    <select id="selectedProduct" required>
+                        <option value="">اختر منتج</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="notes">ملاحظات (اختياري)</label>
+                    <textarea id="notes" placeholder="أي طلبات خاصة..."></textarea>
+                </div>
+
+                <div class="form-buttons">
+                    <button type="button" class="btn btn-primary" onclick="submitViaWhatsApp()">
+                        📱 WhatsApp
+                    </button>
+                    <button type="button" class="btn btn-primary" onclick="submitViaTelegram()">
+                        ✈️ Telegram
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Data
+        const products = [
+            { name: 'Netflix Premium', price: '250 DZD', emoji: '🎬', description: 'بث 4K على 4 شاشات' },
+            { name: 'ChatGPT Plus', price: '300 DZD', emoji: '🤖', description: 'مساعد ذكي متقدم' },
+            { name: 'CapCut Pro', price: '200 DZD', emoji: '✂️', description: 'محرر فيديو احترافي' },
+            { name: 'Spotify Premium', price: '250 DZD', emoji: '🎵', description: 'موسيقى بدون إعلانات' },
+            { name: 'Adobe Creative Cloud', price: '400 DZD', emoji: '🎨', description: 'جميع تطبيقات Adobe' },
+            { name: 'Canva Pro', price: '180 DZD', emoji: '🖼️', description: 'قوالب تصميم احترافية' }
+        ];
+
+        const pricingPlans = [
+            {
+                name: 'حساب واحد',
+                price: '250',
+                description: 'أي حساب من اختيارك',
+                features: ['حساب مميز واحد', 'تسليم فوري', 'دعم 24/7']
+            },
+            {
+                name: 'حزمة البداية',
+                price: '450',
+                description: 'أي حسابين',
+                features: ['حسابين مميزين', 'تسليم فوري', 'دعم 24/7']
+            },
+            {
+                name: 'الحزمة المميزة',
+                price: '750',
+                description: 'أي 4 حسابات',
+                features: ['4 حسابات مميزة', 'تسليم أولوي', 'دعم VIP', 'هدية إضافية'],
+                premium: true
+            },
+            {
+                name: 'الحزمة الكاملة',
+                price: '999',
+                description: 'جميع الحسابات + هدية',
+                features: ['جميع الحسابات', 'تسليم أولوي', 'دعم VIP', 'هدية حصرية']
+            }
+        ];
+
+        const reviews = [
+            { name: 'أحمد علي', product: 'Netflix', text: 'خدمة ممتازة! وصلت لي الحساب في 5 دقائق', rating: 5 },
+            { name: 'فاطمة حسن', product: 'ChatGPT', text: 'تسليم سريع جداً وفريق دعم رائع!', rating: 5 },
+            { name: 'محمد إبراهيم', product: 'Spotify', text: 'أفضل متجر في الجزائر. ممتاز جداً!', rating: 5 },
+            { name: 'سارة أحمد', product: 'CapCut', text: 'تجربة رائعة جداً. سأشتري مجدداً!', rating: 5 }
+        ];
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            loadProducts();
+            loadPricing();
+            loadReviews();
+        });
+
+        // Load Products
+        function loadProducts() {
+            const grid = document.getElementById('productsGrid');
+            grid.innerHTML = products.map(product => `
+                <div class="product-card">
+                    <div class="product-image">${product.emoji}</div>
+                    <div class="product-info">
+                        <h3 class="product-name">${product.name}</h3>
+                        <p class="product-price">${product.price}</p>
+                        <p style="font-size: 0.9rem; opacity: 0.8;">${product.description}</p>
+                        <button class="product-btn" onclick="selectProduct('${product.name}', '${product.price}')">اشتري الآن</button>
+                    </div>
+                </div>
+            `).join('');
+
+            // Populate select
+            const select = document.getElementById('selectedProduct');
+            select.innerHTML += products.map(p => `<option value="${p.name} - ${p.price}">${p.name}</option>`).join('');
+        }
+
+        // Load Pricing
+        function loadPricing() {
+            const grid = document.getElementById('pricingGrid');
+            grid.innerHTML = pricingPlans.map((plan, index) => `
+                <div class="pricing-card ${plan.premium ? 'premium-card' : ''}">
+                    ${plan.premium ? '<div class="premium-badge">الأكثر رواجاً</div>' : ''}
+                    <h3>${plan.name}</h3>
+                    <div class="price">${plan.price} <span style="font-size: 1rem;">DZD</span></div>
+                    <p style="margin-bottom: 1.5rem;">${plan.description}</p>
+                    <button class="product-btn" onclick="selectPlan('${plan.name}')">ابدأ الآن</button>
+                    <ul class="features">
+                        ${plan.features.map(f => `<li>✓ ${f}</li>`).join('')}
+                    </ul>
+                </div>
+            `).join('');
+        }
+
+        // Load Reviews
+        function loadReviews() {
+            const grid = document.getElementById('reviewsGrid');
+            grid.innerHTML = reviews.map(review => `
+                <div class="review-card">
+                    <div class="review-header">
+                        <div>
+                            <h4>${review.name}</h4>
+                            <p style="font-size: 0.875rem; opacity: 0.7;">${review.product}</p>
+                        </div>
+                        <div class="review-avatar">${review.name.charAt(0)}</div>
+                    </div>
+                    <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                    <p>${review.text}</p>
+                </div>
+            `).join('');
+        }
+
+        // Switch Tab
+        function switchTab(tabName) {
+            // Hide all panes
+            document.querySelectorAll('.tab-pane').forEach(pane => {
+                pane.classList.remove('active');
+            });
+            document.querySelectorAll('.tab-button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            // Show selected pane
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        // Select Product
+        function selectProduct(name, price) {
+            document.getElementById('selectedProduct').value = `${name} - ${price}`;
+            document.getElementById('orderModal').classList.add('active');
+        }
+
+        // Select Plan
+        function selectPlan(plan) {
+            document.getElementById('selectedProduct').value = plan;
+            document.getElementById('orderModal').classList.add('active');
+        }
+
+        // Submit via WhatsApp
+        function submitViaWhatsApp() {
+            const name = document.getElementById('customerName').value;
+            const number = document.getElementById('whatsappNumber').value;
+            const product = document.getElementById('selectedProduct').value;
+            const notes = document.getElementById('notes').value;
+
+            if (!name || !number || !product) {
+                alert('الرجاء ملء جميع الحقول المطلوبة');
+                return;
+            }
+
+            const message = `مرحباً، أود طلب: ${product}\nالاسم: ${name}\nملاحظات: ${notes || 'لا توجد'}`;
+            const encodedMessage = encodeURIComponent(message);
+            window.open(`https://wa.me/213123456789?text=${encodedMessage}`, '_blank');
+
+            document.getElementById('orderForm').reset();
+            closeOrderModal();
+            alert('تم إرسال الطلب بنجاح!');
+        }
+
+        // Submit via Telegram
+        function submitViaTelegram() {
+            const name = document.getElementById('customerName').value;
+            const number = document.getElementById('whatsappNumber').value;
+            const product = document.getElementById('selectedProduct').value;
+            const notes = document.getElementById('notes').value;
+
+            if (!name || !number || !product) {
+                alert('الرجاء ملء جميع الحقول المطلوبة');
+                return;
+            }
+
+            const message = `مرحباً، أود طلب: ${product}\nالاسم: ${name}\nرقم الاتصال: ${number}\nملاحظات: ${notes || 'لا توجد'}`;
+            const encodedMessage = encodeURIComponent(message);
+            window.open(`https://t.me/botusername?start=${encodedMessage}`, '_blank');
+
+            document.getElementById('orderForm').reset();
+            closeOrderModal();
+            alert('تم إرسال الطلب بنجاح!');
+        }
+
+        // Close Modal
+        function closeOrderModal() {
+            document.getElementById('orderModal').classList.remove('active');
+        }
+
+        // Close modal on background click
+        document.getElementById('orderModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeOrderModal();
+            }
+        });
+    </script>
+</body>
+</html>
